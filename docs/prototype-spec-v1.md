@@ -1,95 +1,137 @@
-# Prototype Specification v1 (Iteration 1)
+# Prototype Specification Final v1 (Iteration 1)
 
-## 1. Purpose
+Target artifact for first assessment: `Prototype_groupXXX.pdf`
 
-This prototype communicates the intended user workflow and UI structure before full implementation.
+## 1. Objective
 
-It supports first assessment goals:
-- demonstrate functionality coverage at low/medium fidelity
-- collect early user feedback
-- validate backlog priority and story scope
+This prototype demonstrates how TA, MO, and Admin complete core tasks in a file-based Java system without database dependency.
 
-## 2. Fidelity and Format
+## 2. Fidelity and Deliverable
 
-- Fidelity: low to medium
-- Suggested tools: Figma, Balsamiq, or draw.io
-- Submission artifact: `Prototype_groupXXX.pdf`
+- Fidelity: low/medium (sufficient for workflow validation)
+- Suggested tools: Figma / Balsamiq / draw.io
+- Export format: PDF
+- Review focus: functionality coverage, usability clarity, role-based navigation
 
-## 3. Constraints Reflected in Prototype
+## 3. Scope Boundaries
 
-1. Roles: TA, MO, Admin
-2. Java Servlet/JSP style page navigation (simple forms/tables)
-3. File-based data concept (no database management screens)
-4. Focus on core flow over visual polish
+### In Scope (Iteration 1)
 
-## 4. Screen List (Minimum)
+1. Role-based navigation skeleton
+2. TA profile creation
+3. CV metadata/reference submission
+4. Job posting and job listing/search
+5. Initial flow consistency checks and form validation states
 
-### Shared
-1. Login / Role selection page
-2. Home dashboard (role-based links)
+### Out of Scope (Iteration 1)
 
-### TA Screens
-1. TA profile form
-2. CV upload/reference form
-3. Job list + search/filter
-4. Job application confirmation
-5. Application status list
+1. Full candidate selection and status lifecycle execution
+2. Workload calculation engine implementation
+3. Advanced AI recommendation logic
+4. Production-grade UI polish
 
-### MO Screens
-1. Job posting form
-2. Job management list
-3. Applicant list per job
-4. Status update action panel
+## 4. Screen Inventory
 
-### Admin Screens
-1. Workload summary dashboard
-2. Export summary action page
+| Screen ID | Screen Name | Role | Key Purpose | Related Story |
+|---|---|---|---|---|
+| S-01 | Role Login/Entry | Shared | enter system by role | TA-01, MO-01, AD-01 |
+| S-02 | Role Home Dashboard | Shared | route to role tasks | all |
+| S-03 | TA Profile Form | TA | create/edit applicant profile | TA-01 |
+| S-04 | CV Metadata Form | TA | upload reference metadata | TA-02 |
+| S-05 | Job List + Filter | TA | browse/search active jobs | TA-03 |
+| S-06 | Job Detail + Apply | TA | preview job and apply action | TA-04 |
+| S-07 | Application Status List | TA | track application statuses | TA-05 |
+| S-08 | Job Posting Form | MO | create new TA job posting | MO-01 |
+| S-09 | Job Management List | MO | view own posted jobs | MO-01 |
+| S-10 | Applicant List by Job | MO | review applicants per job | MO-02 |
+| S-11 | Status Update Panel | MO | set shortlist/reject/offer | MO-03 |
+| S-12 | Workload Dashboard | Admin | inspect aggregate workload | AD-01 |
+| S-13 | Workload Export Page | Admin | export CSV/JSON | AD-02 |
 
-## 5. Key User Flows
+## 5. Screen-Level Form Fields (Minimum)
 
-### Flow A: TA Applies for a Job
-1. TA logs in
-2. TA completes profile and CV reference
-3. TA browses job list
-4. TA opens job details and submits application
-5. TA checks status page
+### S-03 TA Profile Form
 
-### Flow B: MO Processes Applications
-1. MO logs in
-2. MO creates job posting
-3. MO opens applicant list
-4. MO updates status (SHORTLISTED/REJECTED/OFFERED)
+- Student ID (required)
+- Name (required)
+- Email (required)
+- Skills (tag list, required)
+- Availability hours/week (optional)
 
-### Flow C: Admin Reviews Workload
-1. Admin logs in
-2. Admin opens workload dashboard
-3. Admin reviews over-threshold flags
-4. Admin exports CSV/JSON summary
+Validation:
+- required fields cannot be empty
+- student ID format must match defined pattern
 
-## 6. Prototype Validation Checklist
+### S-08 Job Posting Form
 
-1. Every P0 story has at least one corresponding screen.
-2. Navigation between screens is clear and testable.
-3. Error states are shown for missing required input.
-4. Role permissions are visible in UI behavior.
-5. Status updates are reflected in TA-facing views.
+- Job ID (generated or required)
+- Module code (required)
+- Job title (required)
+- Required skills (required)
+- Weekly workload hours (required)
+- Application deadline (optional)
 
-## 7. Planned Feedback Collection
+Validation:
+- workload must be positive integer
+- module code/title must not be empty
 
-Stakeholder feedback questions:
-1. Are the role workflows complete for real recruitment tasks?
-2. Are form fields sufficient and understandable?
-3. Is status naming clear to both TA and MO?
-4. Is workload summary useful for admin decisions?
+## 6. Core Interaction Flows
 
-Output from feedback:
-- prioritized change list
-- revised backlog items
-- updates to acceptance criteria
+### Flow A TA Application Journey
 
-## 8. Out-of-Scope for Iteration 1 Prototype
+S-01 -> S-02 -> S-03 -> S-04 -> S-05 -> S-06 -> S-07
 
-1. Advanced UI styling and animation
-2. Complex AI recommendation details
-3. Full reporting/export customization
-4. Performance tuning and security hardening
+### Flow B MO Posting and Decision Journey
+
+S-01 -> S-02 -> S-08 -> S-09 -> S-10 -> S-11
+
+### Flow C Admin Monitoring Journey
+
+S-01 -> S-02 -> S-12 -> S-13
+
+## 7. Error and Empty States to Include in Prototype
+
+1. Required field missing on profile form
+2. CV reference invalid format
+3. No jobs found after search
+4. Duplicate application warning
+5. Applicant list empty for selected job
+6. No workload data available
+
+## 8. Story-to-Prototype Coverage Matrix
+
+| Story ID | Covered in Prototype | Screen IDs |
+|---|---|---|
+| TA-01 | Yes | S-03 |
+| TA-02 | Yes | S-04 |
+| TA-03 | Yes | S-05 |
+| TA-04 | Partial (UI only in Iteration 1) | S-06 |
+| TA-05 | Partial (UI only in Iteration 1) | S-07 |
+| MO-01 | Yes | S-08, S-09 |
+| MO-02 | Partial (UI only in Iteration 1) | S-10 |
+| MO-03 | Partial (UI only in Iteration 1) | S-11 |
+| AD-01 | Concept only | S-12 |
+| AD-02 | Concept only | S-13 |
+
+## 9. Feedback Plan and Evidence
+
+### Planned Stakeholder Questions
+
+1. Are role boundaries clear and realistic?
+2. Are any required fields missing for real recruitment?
+3. Is status terminology understandable to TA and MO?
+4. Is workload dashboard summary sufficient for admin decisions?
+
+### Evidence to Save
+
+- annotated screenshots
+- interview/survey notes
+- issue list and priority updates
+- backlog changes after feedback
+
+## 10. Prototype Acceptance Checklist
+
+1. Every Iteration 1 committed story has at least one concrete screen.
+2. Navigation and role permissions are visually understandable.
+3. Main error/empty states are represented.
+4. PDF export is complete and readable for assessor review.

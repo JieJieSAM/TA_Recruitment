@@ -1,80 +1,136 @@
-# Brief Report v1 Outline (First Assessment)
+# Brief Report Draft v1 (First Assessment)
 
-Target submission: **Report_groupXXX.pdf** (maximum 5 pages, excluding supporting materials).
+Target file on submission platform: `Report_groupXXX.pdf`  
+Page constraint: max 5 pages for main body (appendix excluded).
 
-## 1. Cover Information
+## 1. Introduction
 
-- Module: EBU6304 Software Engineering Group Project
-- Project: International School TA Recruitment System
-- Group number and member list
-- Submission date
+BUPT International School currently handles TA recruitment through forms and Excel tracking, which leads to inconsistent records, delayed updates, and poor visibility of workload distribution.
 
-## 2. Introduction and Problem Context
+Our project proposes a lightweight TA Recruitment System developed with Agile methods. The Iteration 1 goal is to establish validated requirements, a prioritized product backlog, and a role-based prototype that demonstrates the core value path.
 
-2.1 Background of current manual workflow (forms + Excel)  
-2.2 Project goals and expected value  
-2.3 Scope definition for Iteration 1
+## 2. Requirement-Finding Approach
 
-## 3. Fact-Finding Techniques
+### 2.1 Techniques Used
 
-3.1 Technique selection rationale  
-- interviews (MO/Admin/TA perspective)  
-- questionnaire/survey  
-- existing process observation/document review
+1. Semi-structured interviews (MO, TA, Admin perspectives)
+2. Short questionnaire for field and workflow preferences
+3. Existing process walkthrough (manual form and spreadsheet flow)
 
-3.2 Execution summary  
-- who was consulted  
-- what questions were asked  
-- how results were synthesized
+### 2.2 Why These Techniques
 
-3.3 Key findings  
-- pain points  
-- must-have requirements  
-- constraints and assumptions
+- Interviews provide qualitative context and hidden pain points.
+- Questionnaires provide quick comparability for feature priority.
+- Process walkthrough identifies handover failures and duplicated work.
 
-## 4. User Stories and Acceptance Criteria
+### 2.3 Key Findings
 
-4.1 Stakeholder role definition (TA/MO/Admin)  
-4.2 Story writing approach (`As a / I want / So that`)  
-4.3 Acceptance criteria style (testable Given-When-Then)
+1. Profile and CV information is frequently incomplete.
+2. Job availability visibility is inconsistent for applicants.
+3. Status communication is delayed and non-transparent.
+4. Admin lacks a unified workload view.
 
-## 5. Prioritization and Estimation
+These findings directly informed the Must-have stories in Iteration 1 and Iteration 2 planning.
 
-5.1 Prioritization method (MoSCoW / value-risk balance)  
-5.2 Estimation method (story points, team calibration)  
-5.3 Trade-offs and rationale for Iteration 1 commitment
+## 3. User Stories and Acceptance Criteria
 
-## 6. Iteration Planning
+We defined stories for three roles: TA, MO, Admin, using standard format:
 
-6.1 Sprint goals and planned deliverables  
-6.2 Backlog-to-iteration mapping  
-6.3 Team task allocation and GitHub workflow
+- As a [role], I want [goal], so that [value].
 
-## 7. Prototype Summary
+Each story includes testable acceptance criteria with Given-When-Then logic to support objective demo and later acceptance testing.
 
-7.1 Prototype fidelity and tool choice  
-7.2 Main screens and user flows covered  
-7.3 Feedback received and planned revisions
+Reference document: `docs/iteration1-user-stories.md`
 
-## 8. Reflection and Next Steps
+## 4. Prioritization and Estimation
 
-8.1 What worked well in Iteration 1  
-8.2 Main risks identified  
-8.3 Plan for Iteration 2 improvements
+### 4.1 Prioritization Method
 
-## 9. Supporting Materials (Appendix, not counted in 5 pages)
+MoSCoW method was used:
 
-- Interview questions
-- Survey form and summary
-- Raw feedback notes
-- Additional prototype snapshots
-- Change log from feedback to backlog
+- Must: core recruitment path (`profile -> job post/search -> apply groundwork`)
+- Should: supportive but not blocking features
+- Could: optional AI enhancements and advanced outputs
 
-## Writing Notes
+### 4.2 Estimation Method
 
-1. Keep the core report concise and evidence-driven.
-2. Every claim should point to concrete artifacts (stories, backlog rows, feedback notes).
-3. Explicitly state alignment with handout constraints:
-   - Java app
-   - no database
-   - text file storage
+Story points were assigned with team discussion (Fibonacci values 3/5/8), considering complexity, uncertainty, and integration cost.
+
+### 4.3 Iteration 1 Commitment Rationale
+
+Iteration 1 focuses on high-value/low-dependency stories:
+
+- TA-01, TA-02, TA-03, MO-01
+
+This secures the baseline user journey while keeping risk manageable before the first checkpoint.
+
+## 5. Iteration Planning and Agile Management
+
+### 5.1 Iteration Plan
+
+- Iteration 1: requirements finalization + prototype + backlog + project skeleton
+- Iteration 2: complete apply/review/status workflow
+- Iteration 3: workload dashboard + data quality + stronger tests
+- Iteration 4: usability polish + final acceptance preparation
+
+### 5.2 Team Collaboration
+
+- branch-per-task strategy on GitHub
+- pull request review for each story
+- weekly planning + daily short stand-up
+- documented backlog refinement after feedback
+
+## 6. Prototype Summary
+
+The prototype is low/medium fidelity and covers role-based workflows for TA, MO, and Admin.
+
+It includes:
+
+1. TA profile/CV/job browsing pages
+2. MO job posting and applicant review pages
+3. Admin workload overview concept page
+
+It also shows error and empty states to validate usability and edge-case handling.
+
+Reference document: `docs/prototype-spec-v1.md`
+
+## 7. Reflection and Risks
+
+### 7.1 What Worked Well
+
+1. Role-based decomposition improved scope clarity.
+2. Early acceptance criteria reduced ambiguity.
+3. Story-to-prototype traceability improved team alignment.
+
+### 7.2 Identified Risks
+
+1. Requirement changes after stakeholder review
+2. Inconsistent data schema across modules
+3. Integration delays near assessment checkpoints
+
+### 7.3 Mitigation
+
+1. Weekly refinement with explicit change logs
+2. Shared JSON schema conventions
+3. Integration freeze window before each assessment demo
+
+## 8. Next Iteration Plan
+
+Iteration 2 will implement the end-to-end operational path:
+
+- TA apply for job
+- MO review applicants
+- MO update status
+- TA track updated status
+
+This will deliver the first complete functional workflow for intermediate demo preparation.
+
+## Appendix (Not in Page Limit)
+
+Suggested appendix content:
+
+- interview question list
+- survey summary table
+- prototype screenshots
+- backlog revision history
+- GitHub activity evidence
